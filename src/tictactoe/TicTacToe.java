@@ -20,7 +20,7 @@ public class TicTacToe {
 
     private char[][] table;
 
-    private int currentPlayer = 0; // текущий игрок
+    public int currentPlayer = 0; // текущий игрок
 
     private int moveX = 0;  // ход игрока x
     private int moveY = 0;  // ход игрока y
