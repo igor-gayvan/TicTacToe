@@ -41,12 +41,12 @@ public class TicTacToe {
     public void showTable() {
         System.out.print("  ");
         for (int i = 0; i < table[0].length; i++) {
-            System.out.print("" + i);
+            System.out.print("" + (i + 1));
         }
         System.out.println("");
 
         for (int i = 0; i < table.length; i++) {
-            System.out.print(i + "|");
+            System.out.print(i + 1 + "|");
 
             for (int j = 0; j < table[i].length; j++) {
 
@@ -81,8 +81,8 @@ public class TicTacToe {
      * @param y
      */
     public void setMovePosition(int x, int y) {
-        moveX = x;
-        moveY = y;
+        this.moveX = x;
+        this.moveY = y;
     }
 
     /**
@@ -248,11 +248,12 @@ public class TicTacToe {
         String[] arrWay = new String[]{"up", "down", "left", "right", "up-left", "up-right", "down-left", "down-right"};
 
         for (int i = 0; i < arrWay.length; i++) {
-            if (calcSteps(moveX, moveY, arrWay[i], 0)) {
+            if (calcSteps(this.moveX, this.moveY, arrWay[i], 0)) {
                 return true;
             }
         }
 
+     
         return false;
     }
 }

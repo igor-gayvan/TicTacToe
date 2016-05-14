@@ -60,10 +60,9 @@ public class Game {
                     String[] position = str.split(",");
 
                     if (position.length == 2) {
-
                         try {
-                            int moveX = Integer.parseInt(position[0]);
-                            int moveY = Integer.parseInt(position[1]);
+                            int moveX = Integer.parseInt(position[0]) - 1;
+                            int moveY = Integer.parseInt(position[1]) - 1;
 
                             ticTacToe.setMovePosition(moveX, moveY);
 
