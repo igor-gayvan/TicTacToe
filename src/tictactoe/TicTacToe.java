@@ -88,7 +88,7 @@ public class TicTacToe {
      */
     public void showPlayerMessage() {
         System.out.println("");
-        System.out.print("Игрок №" + currentPlayer + "\n" + "Введите координаты хода: ");
+        System.out.print("Игрок №" + currentPlayer + "\n" + "Введите координаты хода в формате 'x,y': ");
     }
 
     /**
@@ -103,6 +103,28 @@ public class TicTacToe {
             table[moveY][moveX] = getPlayerSymbol();
             currentPlayer = 1;
         }
+    }
+
+    /**
+     * проверяем возможность хода
+     *
+     * @return int 0 - занято, -1 - выход за диапазон, 1 - пусто
+     */
+    public int checkCell(int x, int y) {
+
+        int statusCell = 0;
+
+        if ((x >= 0 && y >= 0) && (x < this.x && y < this.y)) {
+
+            if (table[y][x] == 0) {
+                statusCell = 1;
+            }
+
+        } else {
+            statusCell = -1; // выход за диапазон
+        }
+
+        return statusCell;
     }
 
 }
