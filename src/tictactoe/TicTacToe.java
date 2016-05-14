@@ -240,5 +240,19 @@ public class TicTacToe {
         return false;
     }
 
-   
+    /**
+     * Проверка на конец игры
+     */
+    public boolean checkGameOver() {
+
+        String[] arrWay = new String[]{"up", "down", "left", "right", "up-left", "up-right", "down-left", "down-right"};
+
+        for (int i = 0; i < arrWay.length; i++) {
+            if (calcSteps(moveX, moveY, arrWay[i], 0)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
