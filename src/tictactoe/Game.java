@@ -93,7 +93,7 @@ public class Game {
                             System.out.println("Координаты: должны быть целые числа!");
                         }
                     } else {
-                        System.out.println("Координаты должны быть в виде 'n,n)'!");
+                        System.out.println("Координаты должны быть в виде 'N,N'!");
                     }
                 }
                 ticTacToe.showPlayerMessage();
