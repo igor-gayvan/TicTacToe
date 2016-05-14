@@ -90,7 +90,7 @@ public class TicTacToe {
      */
     public void showPlayerMessage() {
         System.out.println("");
-        System.out.print("Игрок №" + currentPlayer + "\n" + "Введите координаты хода в формате 'x,y': ");
+        System.out.print("Игрок №" + currentPlayer + " (" + getPlayerSymbol() + ")\n" + "Введите координаты хода в формате 'N,N': ");
     }
 
     /**
