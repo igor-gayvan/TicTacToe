@@ -73,6 +73,17 @@ public class TicTacToe {
     }
 
     /**
+     * Задаем координаты хода
+     *
+     * @param x
+     * @param y
+     */
+    public void setMovePosition(int x, int y) {
+        moveX = x;
+        moveY = y;
+    }
+
+    /**
      * Делаем ход.
      */
     private void makeMove() {
