@@ -253,7 +253,20 @@ public class TicTacToe {
             }
         }
 
-     
+        int cntBusyCell = 0;
+        for (int i = 0; i < this.cntCellX; i++) {
+            for (int j = 0; i < this.cntCellY; i++) {
+                if (checkCell(i, j) == 0) {
+                    cntBusyCell++;
+                }
+            }
+
+        }
+
+        if (cntBusyCell < cntCellX * cntCellY) {
+            return true;
+        }
+
         return false;
     }
 }
