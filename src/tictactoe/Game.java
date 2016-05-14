@@ -72,7 +72,14 @@ public class Game {
                             if (statusCell > 0) {
 
                                 boolean isGameOver = ticTacToe.checkGameOver();
-                                String message = "Игра окончена!\n" + "Победа игрока №" + ticTacToe.currentPlayer;
+                                String message;
+
+                                message = "Игра окончена!\n";
+                                if (ticTacToe.currentPlayer == 0) {
+                                    message = message + "Ничья!";
+                                } else {
+                                    message = message + "Победа игрока №" + ticTacToe.currentPlayer;
+                                }
 
                                 ticTacToe.makeMove();
                                 ticTacToe.showTable();

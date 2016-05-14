@@ -263,7 +263,7 @@ public class TicTacToe {
 
         }
 
-        if (cntBusyCell < cntCellX * cntCellY) {
+        if (cntBusyCell >= cntCellX * cntCellY) {
             currentPlayer = 0;
             return true;
         }
