@@ -84,6 +84,14 @@ public class TicTacToe {
     }
 
     /**
+     * Выводим кто ходит
+     */
+    public void showPlayerMessage() {
+        System.out.println("");
+        System.out.print("Игрок №" + currentPlayer + "\n" + "Введите координаты хода: ");
+    }
+
+    /**
      * Делаем ход.
      */
     private void makeMove() {

@@ -19,7 +19,8 @@ public class Main {
         TicTacToe ticTacToe = new TicTacToe(3, 3);
 
         ticTacToe.showTable();
-//        ticTacToe.
+        
+        ticTacToe.showPlayerMessage();
     }
 
 }
