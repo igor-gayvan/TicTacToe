@@ -18,6 +18,8 @@ public class TicTacToe {
 
     private char[][] table;
 
+    private int currentPlayer = 0; // текущий игрок
+
     public TicTacToe(int x, int y) {
 
         if (x > 3) {
@@ -28,6 +30,7 @@ public class TicTacToe {
         }
 
         table = new char[this.y][this.x];
+        currentPlayer = 1;
     }
 
     public void showTable() {
