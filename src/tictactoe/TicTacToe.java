@@ -20,6 +20,9 @@ public class TicTacToe {
 
     private int currentPlayer = 0; // текущий игрок
 
+    private int moveX = 0;  // ход игрока x
+    private int moveY = 0;  // ход игрока y
+
     public TicTacToe(int x, int y) {
 
         if (x > 3) {
@@ -53,6 +56,33 @@ public class TicTacToe {
 
             }
             System.out.println("");
+        }
+    }
+
+    /**
+     * @return определяем чем играет игрок
+     */
+    private char getPlayerSymbol() {
+        if (currentPlayer == 1) {
+            return '0';
+        } else if (currentPlayer == 2) {
+            return 'X';
+        }
+
+        return ' ';
+    }
+
+    /**
+     * Делаем ход.
+     */
+    private void makeMove() {
+
+        if (currentPlayer == 1) {
+            table[moveY][moveX] = getPlayerSymbol();
+            currentPlayer = 2;
+        } else if (currentPlayer == 2) {
+            table[moveY][moveX] = getPlayerSymbol();
+            currentPlayer = 1;
         }
     }
 
