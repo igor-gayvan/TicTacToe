@@ -13,8 +13,10 @@ import java.util.Arrays;
  */
 public class TicTacToe {
 
-    private int x = 3; //размер поля по горизонтали
-    private int y = 3; //размер поля по вертикали	
+    private int cntCellX = 3; //размер поля по горизонтали
+    private int cntCellY = 3; //размер поля по вертикали	
+
+    private final int COUNT_STEP_FOR_WIN = 3; // длина хода
 
     private char[][] table;
 
@@ -23,16 +25,16 @@ public class TicTacToe {
     private int moveX = 0;  // ход игрока x
     private int moveY = 0;  // ход игрока y
 
-    public TicTacToe(int x, int y) {
+    public TicTacToe(int cntCellX, int cntCellY) {
 
-        if (x > 3) {
-            this.x = x;
+        if (cntCellX > 3) {
+            this.cntCellX = cntCellX;
         }
-        if (y > 3) {
-            this.y = y;
+        if (cntCellY > 3) {
+            this.cntCellY = cntCellY;
         }
 
-        table = new char[this.y][this.x];
+        table = new char[this.cntCellX][this.cntCellY];
         currentPlayer = 1;
     }
 
@@ -92,9 +94,9 @@ public class TicTacToe {
     }
 
     /**
-     * Делаем ход.
+     * Делаем ход
      */
-    private void makeMove() {
+    public void makeMove() {
 
         if (currentPlayer == 1) {
             table[moveY][moveX] = getPlayerSymbol();
@@ -114,7 +116,7 @@ public class TicTacToe {
 
         int statusCell = 0;
 
-        if ((x >= 0 && y >= 0) && (x < this.x && y < this.y)) {
+        if ((x >= 0 && y >= 0) && (x < this.cntCellX && y < this.cntCellX)) {
 
             if (table[y][x] == 0) {
                 statusCell = 1;
@@ -127,4 +129,116 @@ public class TicTacToe {
         return statusCell;
     }
 
+    /*	
+	 * Проверка рекурсией количества одинаковых символов по направлениям
+     */
+    private boolean calcSteps(int x, int y, String way, int count) {
+        switch (way) {
+            case "up":
+                if (checkCell(x, y - 1) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y - 1][x] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x, y - 1, way, count + 1);
+                        }
+                    }
+                }
+                break;
+            case "up-left":
+                if (checkCell(x - 1, y - 1) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y - 1][x - 1] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x - 1, y - 1, way, count + 1);
+                        }
+                    }
+                }
+                break;
+
+            case "up-right":
+                if (checkCell(x + 1, y - 1) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y - 1][x + 1] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x + 1, y - 1, way, count + 1);
+                        }
+                    }
+                }
+                break;
+
+            case "down":
+                if (checkCell(x, y + 1) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y + 1][x] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x, y + 1, way, count + 1);
+                        }
+                    }
+                }
+                break;
+
+            case "down-left":
+                if (checkCell(x - 1, y + 1) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y + 1][x - 1] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x - 1, y + 1, way, count + 1);
+                        }
+                    }
+                }
+                break;
+
+            case "down-right":
+                if (checkCell(x + 1, y + 1) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y + 1][x + 1] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x + 1, y + 1, way, count + 1);
+                        }
+                    }
+                }
+                break;
+
+            case "left":
+                if (checkCell(x - 1, y) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y][x - 1] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x - 1, y, way, count + 1);
+                        }
+                    }
+                }
+                break;
+
+            case "right":
+                if (checkCell(x + 1, y) >= 0) {
+                    //если следующий такой же символ
+                    if (table[y][x + 1] == getPlayerSymbol()) {
+                        if (count + 1 == COUNT_STEP_FOR_WIN - 1) { //достигнуто максимальное количество
+                            return true;
+                        } else {
+                            return calcSteps(x + 1, y, way, count + 1);
+                        }
+                    }
+                }
+                break;
+        }
+        return false;
+    }
+
+   
 }
